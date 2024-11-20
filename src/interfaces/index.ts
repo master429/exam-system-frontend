@@ -2,6 +2,7 @@ import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { RegisterUser } from "../pages/Register";
 import { UpdatePassword } from "../pages/UpdatePassword";
 import { message } from "antd";
+import { ExamAdd } from "../pages/ExamList/ExamAddModal";
 
 /*
    用户模块
@@ -92,4 +93,20 @@ examServiceInstance.interceptors.response.use(
 
 export async function examList() {
   return await examServiceInstance.get("/exam/list");
+}
+
+export async function examAdd(values: ExamAdd) {
+  return await examServiceInstance.post("/exam/add", values);
+}
+
+export async function examPublish(id: number) {
+  return await examServiceInstance.get("/exam/publish/" + id);
+}
+
+export async function examUnpublish(id: number) {
+  return await examServiceInstance.get("/exam/unpublish/" + id);
+}
+
+export async function examDelete(id: number) {
+  return await examServiceInstance.delete("/exam/delete/" + id);
 }
