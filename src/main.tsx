@@ -4,6 +4,9 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { UpdatePassword } from "./pages/UpdatePassword";
 import { ExamList } from "./pages/ExamList";
+import { Edit } from "./pages/Edit";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const routes = [
   {
@@ -22,6 +25,10 @@ const routes = [
     path: "update_password",
     element: <UpdatePassword />,
   },
+  {
+    path: "edit/:id",
+    element: <Edit />,
+  },
 ];
 const router = createBrowserRouter(routes, {
   future: {
@@ -38,10 +45,12 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <RouterProvider
-    future={{
-      v7_startTransition: true,
-    }}
-    router={router}
-  />
+  <DndProvider backend={HTML5Backend}>
+    <RouterProvider
+      future={{
+        v7_startTransition: true,
+      }}
+      router={router}
+    />
+  </DndProvider>
 );
