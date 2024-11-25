@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import TextArea from "antd/es/input/TextArea";
 import { useForm } from "antd/es/form/Form";
 import { examFind, examSave } from "../../interfaces";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PreviewModal } from "./PreviewModal";
 
 export type Question = {
@@ -160,7 +160,7 @@ export function Edit() {
       />
 
       <div className="header">
-        <div>试卷编辑器</div>
+        <div style={{ flex: 1 }}>试卷编辑器</div>
         <Button
           type="default"
           onClick={() => {
@@ -171,6 +171,9 @@ export function Edit() {
         </Button>
         <Button type="primary" onClick={saveExam}>
           保存
+        </Button>
+        <Button type="default">
+          <Link to="/">返回</Link>
         </Button>
       </div>
       <div className="body">
